@@ -27,13 +27,22 @@ const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 // LAST-YEAR
 const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 // NEXT-YEAR
-// const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
+const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
 // POPULAR GAMES
-const popular_games = `games?key=${api_key}&dates=${lastYear},${currentDate}&ordering=-rating&page_size`;
+const popular_games = `games?key=${api_key}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
 
-// ALL-GAMES_API
-export const popularGamesURL = () => {
-  return `${base_url}${popular_games}`;
-};
-console.log(popularGamesURL());
+// UPCOMING GAMES
+const upcoming_games = `games?key=${api_key}&dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
+
+// NEW GAMES
+const new_games = `games?key=${api_key}&dates=${lastYear},${currentDate}&ordering=-released&page_size=10`;
+
+// ALL-GAMES_API-FUNC
+export const popularGamesURL = () => `${base_url}${popular_games}`;
+
+// NEXT-GAMES_API-FUNC
+export const upconingGamesURL = () => `${base_url}${upcoming_games}`;
+
+// NEW-GAMES_API-FUNC
+export const newGamesURL = () => `${base_url}${new_games}`;
